@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90680653-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-90680653-2');
+    </script>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Meta -->
+    <meta name="description" content="Responsive Bootstrap 4 Dashboard Template">
+    <meta name="author" content="BootstrapDash">
+
+    <title>Find Your Future Admin</title>
+
+    <!-- vendor css -->
+    <link href="../lib/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="../lib/typicons.font/typicons.css" rel="stylesheet">
+    <link href="../lib/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+
+    <!-- azia CSS -->
+    <link rel="stylesheet" href="../css/azia.css">
+
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="../img/icon.png"/>
+
+  </head>
+  <body>
+
+    <div class="az-header">
+      <div class="container">
+        <div class="az-header-left">
+          <img src="../img/logo_plain.png" alt="Logo" style="width:180px;height:50px;">
+          <a href="" id="azMenuShow" class="az-header-menu-icon d-lg-none"><span></span></a>
+        </div><!-- az-header-left -->
+        <div class="az-header-menu">
+          <ul class="nav">
+            <li class="nav-item active show">
+              <a href="index.html" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Dashboard</a>
+            </li>
+          </ul>
+        </div><!-- az-header-menu -->
+        <div class="az-header-right">
+          <div class="dropdown az-profile-menu">
+            <a href="" class="az-img-user"><img src="../img/user.png" alt=""></a>
+            <div class="dropdown-menu">
+              <div class="az-dropdown-header d-sm-none">
+                <a href="" class="az-header-arrow"><i class="icon ion-md-arrow-back"></i></a>
+              </div>
+              <div class="az-header-profile">
+                <div class="az-img-user">
+                  <img src="../img/user.png" alt="">
+                </div><!-- az-img-user -->
+                <h6>Aziana Pechon</h6>
+                <span>Admin</span>
+              </div><!-- az-header-profile -->
+              <a href="page-signin.html" class="dropdown-item"><i class="typcn typcn-power-outline"></i> Sign Out</a>
+            </div><!-- dropdown-menu -->
+          </div>
+        </div><!-- az-header-right -->
+      </div><!-- container -->
+    </div><!-- az-header -->
+
+    <div class="az-content az-content-dashboard">
+      <div class="container">
+        <div class="az-content-body">
+          <div class="az-dashboard-one-title">
+            <div>
+              <h2 class="az-dashboard-title">Hi, welcome back!</h2>
+              <p class="az-dashboard-text">Your web analytics dashboard.</p>
+            </div>
+          </div><!-- az-dashboard-one-title -->
+
+          <div class="row row-sm mg-b-20">
+            <div class="col-lg-6 mg-t-20 mg-lg-t-0">
+              <div class="card card-dashboard-four">
+                <div class="card-header">
+                  <h6 class="card-title">Most popular preferences</h6>
+                </div><!-- card-header -->
+                <div class="card-body row">
+                  <div class="col-md-6 d-flex align-items-center">
+                    <div class="chart"><canvas id="chartDonut"></canvas></div>
+                  </div><!-- col -->
+                  <div class="col-md-6 col-lg-5 mg-lg-l-auto mg-t-20 mg-md-t-0">
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>Organic Search</span>
+                        <span>1,320 <span>(25%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-purple wd-25p" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>Email</span>
+                        <span>987 <span>(20%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-primary wd-20p" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>Referral</span>
+                        <span>2,010 <span>(30%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-info wd-30p" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>Social</span>
+                        <span>654 <span>(15%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-teal wd-15p" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>Other</span>
+                        <span>400 <span>(10%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-gray-500 wd-10p" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                  </div><!-- col -->
+                </div><!-- card-body -->
+              </div><!-- card-dashboard-four -->
+            </div><!-- col -->
+
+            <div class="col-lg-6 mg-t-20 mg-lg-t-0">
+              <div class="card card-dashboard-four">
+                <div class="card-header">
+                  <h6 class="card-title">Most popular hobbies</h6>
+                </div><!-- card-header -->
+                <div class="card-body row">
+                  <div class="col-md-6 d-flex align-items-center">
+                    <div class="chart"><canvas id="chartDonut"></canvas></div>
+                  </div><!-- col -->
+                  <div class="col-md-6 col-lg-5 mg-lg-l-auto mg-t-20 mg-md-t-0">
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>Organic Search</span>
+                        <span>1,320 <span>(25%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-purple wd-25p" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>Email</span>
+                        <span>987 <span>(20%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-primary wd-20p" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>Referral</span>
+                        <span>2,010 <span>(30%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-info wd-30p" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>Social</span>
+                        <span>654 <span>(15%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-teal wd-15p" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <span>Other</span>
+                        <span>400 <span>(10%)</span></span>
+                      </div>
+                      <div class="progress">
+                        <div class="progress-bar bg-gray-500 wd-10p" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div><!-- progress -->
+                    </div>
+                  </div><!-- col -->
+                </div><!-- card-body -->
+              </div><!-- card-dashboard-four -->
+            </div><!-- col -->
+          </div><!-- row -->
+
+        </div><!-- az-content-body -->
+      </div>
+    </div><!-- az-content -->
+
+    <div class="az-footer ht-40">
+      <div class="container ht-100p pd-t-0-f">
+        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Find Your Future 2020</span>
+      </div><!-- container -->
+    </div><!-- az-footer -->
+
+
+    <script src="../lib/jquery/jquery.min.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/ionicons/ionicons.js"></script>
+    <script src="../lib/jquery.flot/jquery.flot.js"></script>
+    <script src="../lib/jquery.flot/jquery.flot.resize.js"></script>
+    <script src="../lib/chart.js/Chart.bundle.min.js"></script>
+    <script src="../lib/peity/jquery.peity.min.js"></script>
+
+    <script src="../js/azia.js"></script>
+    <script src="../js/chart.flot.sampledata.js"></script>
+    <script src="../js/dashboard.sampledata.js"></script>
+    <script>
+      $(function(){
+        'use strict'
+
+        // Donut Chart
+        var datapie = {
+          labels: ['Search', 'Email', 'Referral', 'Social', 'Other'],
+          datasets: [{
+            data: [25,20,30,15,10],
+            backgroundColor: ['#6f42c1', '#007bff','#17a2b8','#00cccc','#adb2bd']
+          }]
+        };
+
+        var optionpie = {
+          maintainAspectRatio: false,
+          responsive: true,
+          legend: {
+            display: false,
+          },
+          animation: {
+            animateScale: true,
+            animateRotate: true
+          }
+        };
+
+        // For a doughnut chart
+        var ctxpie= document.getElementById('chartDonut');
+        var myPieChart6 = new Chart(ctxpie, {
+          type: 'doughnut',
+          data: datapie,
+          options: optionpie
+        });
+
+      });
+    </script>
+  </body>
+</html>

@@ -22,8 +22,39 @@
     <!-- favicon -->
     <link rel="icon" type="image/png" href="../img/icon.png"/>
 
+    <style>
+      .alert {
+        padding: 10px;
+        background-color: #f44336; /* Red */
+        color: white;
+        margin:auto;
+      }
+
+      /* The close button */
+      .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      /* When moving the mouse over the close button */
+      .closebtn:hover {
+        color: black;
+      }
+    </style>
+
   </head>
   <body class="az-body">
+
+    <!-- <div class="alert" id="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <p id="text">x</p>
+    </div> -->
 
     <div class="az-signin-wrapper">
       <div class="az-card-signin">
@@ -54,52 +85,26 @@
     </div><!-- az-signin-wrapper -->
 
     <script src="../lib/jquery/jquery.min.js"></script>
-    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script> -->
     <script src="../lib/ionicons/ionicons.js"></script>
     <script src="../js/azia.js"></script>
 
-    <!-- FIREBASE -->  
+    <!-- FIREBASE SCRIPTS -->  
       <!-- The core Firebase SDK must be listed first -->
       <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
 
       <!-- Add Firebase products that you want to use -->
       <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
 
+      <script src="firebase.js"></script>
+      <script src="index.js"></script>
+
       <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-          apiKey: "AIzaSyCsLbh0STbbGcYAFD1HsNwDwgubpg4xCWM",
-          authDomain: "findyourfuture-87b10.firebaseapp.com",
-          databaseURL: "https://findyourfuture-87b10.firebaseio.com",
-          projectId: "findyourfuture-87b10",
-          storageBucket: "findyourfuture-87b10.appspot.com",
-          messagingSenderId: "757163192948",
-          appId: "1:757163192948:web:e9dd0b080b75d932f41721"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig); 
+
       </script>
-    <!-- End of Firebase Code --> 
-
-    <!-- <script src="index.js"></script> -->
-
+    <!-- END FIREBASE SCRIPTS -->
     <script>
-      function login(event){
-        event.preventDefault();
-        var useremail = document.getElementById("email").value;
-        var userpass = document.getElementById("password").value;
-    
-        firebase.auth().signInWithEmailAndPassword(useremail, userpass)
-        .then((user) => {
-            console.log(email);
-            window.location.replace("./index.html");
-        })
-        .catch((error) => {
-            var errorMessage = error.message;
-            window.alert("Error:" +errorMessage);
-            console.log("Error:" +errorMessage);
-        });
-    }
-  </script>
+
+    </script>
   </body>
 </html>

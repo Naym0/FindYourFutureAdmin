@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90680653-2"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', 'UA-90680653-2');
     </script>
 
     <!-- Required meta tags -->
@@ -60,10 +54,9 @@
                 <div class="az-img-user">
                   <img src="../img/user.png" alt="">
                 </div><!-- az-img-user -->
-                <h6>Aziana Pechon</h6>
-                <span>Admin</span>
+                <h6>Administrator</h6>
               </div><!-- az-header-profile -->
-              <a href="page-signin.html" class="dropdown-item"><i class="typcn typcn-power-outline"></i> Sign Out</a>
+              <a onclick="logout()" href="#" class="dropdown-item"><i class="typcn typcn-power-outline"></i> Sign Out</a>
             </div><!-- dropdown-menu -->
           </div>
         </div><!-- az-header-right -->
@@ -148,7 +141,7 @@
                 </div><!-- card-header -->
                 <div class="card-body row">
                   <div class="col-md-6 d-flex align-items-center">
-                    <div class="chart"><canvas id="chartDonut"></canvas></div>
+                    <div class="chart"><canvas id="chartDonut1"></canvas></div>
                   </div><!-- col -->
                   <div class="col-md-6 col-lg-5 mg-lg-l-auto mg-t-20 mg-md-t-0">
                     <div class="az-traffic-detail-item">
@@ -202,6 +195,20 @@
             </div><!-- col -->
           </div><!-- row -->
 
+          <div class="row row-sm mg-b-20">
+            <div class="col-lg-6 mg-t-20 mg-lg-t-0">
+              <div class="card card-dashboard-four">
+                <div class="card-header">
+                  <h6 class="card-title">User gender statistics</h6>
+                </div><!-- card-header -->
+                <div class="col-sm-8 col-md-6 col-xl-4 mg-t-20 mg-xl-t-0">
+                  <div class="az-content-label az-content-label-sm mg-b-15">Using Gradient Color</div>
+                  <div class="ht-200 ht-lg-250"><canvas id="chartBar3"></canvas></div>
+                </div><!-- col-6 -->
+              </div><!-- card-dashboard-four -->
+            </div><!-- col -->
+          </div><!-- row -->
+
         </div><!-- az-content-body -->
       </div>
     </div><!-- az-content -->
@@ -220,10 +227,28 @@
     <script src="../lib/jquery.flot/jquery.flot.resize.js"></script>
     <script src="../lib/chart.js/Chart.bundle.min.js"></script>
     <script src="../lib/peity/jquery.peity.min.js"></script>
-
+    <script src="../js/chart.chartjs.js"></script>
     <script src="../js/azia.js"></script>
     <script src="../js/chart.flot.sampledata.js"></script>
     <script src="../js/dashboard.sampledata.js"></script>
+    <script src="../js/jquery.cookie.js" type="text/javascript"></script>
+
+
+    <!-- FIREBASE SCRIPTS -->  
+      <!-- The core Firebase SDK must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+
+      <!-- Add Firebase products that you want to use -->
+      <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+
+      <script src="firebase.js"></script>
+      <script src="data.js"></script>
+
+      <script>
+
+      </script>
+    <!-- END FIREBASE SCRIPTS -->
+
     <script>
       $(function(){
         'use strict'
@@ -251,6 +276,13 @@
 
         // For a doughnut chart
         var ctxpie= document.getElementById('chartDonut');
+        var myPieChart6 = new Chart(ctxpie, {
+          type: 'doughnut',
+          data: datapie,
+          options: optionpie
+        });
+
+        var ctxpie= document.getElementById('chartDonut1');
         var myPieChart6 = new Chart(ctxpie, {
           type: 'doughnut',
           data: datapie,

@@ -7710,16 +7710,16 @@ a.text-dark:hover, a.text-dark:focus {
 /* ###### 4.2 Buttons  ###### */
 .btn-az-primary {
   color: #fff;
-  background-color: #5b47fb;
-  border-color: #452efa; }
+  background-color: #b036e0;
+  border-color: #650d88; }
   .btn-az-primary:hover {
     color: #fff;
-    background-color: #3a22fa;
-    border-color: #1f05f0; }
+    background-color: #650d88;
+    border-color: #650d88; }
   .btn-az-primary:focus, .btn-az-primary.focus {
     color: #fff;
-    background-color: #3a22fa;
-    border-color: #1f05f0;
+    background-color: #650d88;
+    border-color: #650d88;
     box-shadow: 0 0 0 0.2rem rgba(97, 77, 251, 0.5); }
   .btn-az-primary.disabled, .btn-az-primary:disabled {
     color: #fff;
@@ -9671,7 +9671,7 @@ body {
         line-height: .9; }
     .az-profile-menu .dropdown-item:hover, .az-profile-menu .dropdown-item:focus {
       background-color: transparent;
-      color: #5b47fb; }
+      color: #b036e0; }
     .az-profile-menu .dropdown-item + .dropdown-item {
       border-top: 1px dotted #b4bdce; }
     .az-profile-menu .dropdown-item:last-child {
@@ -11569,7 +11569,7 @@ body {
 
 .az-signin-header h2 {
   font-weight: 500;
-  color: #5b47fb;
+  color: #b036e0;
   letter-spacing: -1px; }
 
 .az-signin-header h4 {

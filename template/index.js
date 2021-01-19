@@ -1,31 +1,47 @@
 firebase.auth().onAuthStateChanged(function(user){
     if(user){
-        var email = user.email;
-        console.log(email);
+        window.location.replace("./index.html");
     }
     else{
-        //no user
+        // window.location.replace("./page-signin.html");
     }
 });
 
-function anon(){
-    firebase.auth().signInAnonymously()
-    .then(() => {
-        console.log("email");
-    })
-    .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log("Error:" +errorMessage);
-    });
+function login(event){
+    event.preventDefault();
+    var useremail = document.getElementById("email").value;
+    var userpass = document.getElementById("password").value;
+
+    if(validateEmailField()){
+        firebase.auth().signInWithEmailAndPassword(useremail, userpass)
+        .then((user) => {
+            console.log(email);
+            window.location.replace("./index.html");
+        })
+        .catch((error) => {
+            var errorMessage = error.message;
+            window.alert(errorMessage);
+            // function displayerror(){
+            //   if(errorMessage != null){
+            //     var x = document.getElementById("alert").style.display="block";
+            //     document.getElementById("text").innerHTML(errorMessage);
+            //   }
+            // }
+            // displayerror();
+        });
+    }
+    else
+        window.alert("Please use a valid find your future email address");
 }
 
+var acceptlist = [ "findyourfuture.com" , "Findyourfuture.com" ];
 
-
-// function logout(){
-//     firebase.auth().signOut().then(() => {
-//         // Sign-out successful.
-//       }).catch((error) => {
-//         // An error happened.
-//       });
-// }
+function validateEmailField(){
+    var useremail = document.getElementById("email").value;
+    var splitArray = useremail.split('@'); // To Get Array
+    if(acceptlist.indexOf(splitArray[1]) >= 0){
+        // Means it has the accepted domains
+        return true;
+    }
+    return false;
+}

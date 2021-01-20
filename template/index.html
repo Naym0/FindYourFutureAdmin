@@ -207,7 +207,29 @@
                 </div><!-- col-6 -->
               </div><!-- card-dashboard-four -->
             </div><!-- col -->
-          </div><!-- row -->
+
+            <div class="col-lg-6 mg-t-20 mg-lg-t-0">
+              <div class="card card-dashboard-four">
+                <div class="card-header">
+                  <h6 class="card-title">All Registered Users</h6>
+                </div><!-- card-header -->
+                <div class="">
+                  <div class="table-responsive">
+                    <table class="table mg-b-0">
+                      <thead>
+                        <tr>
+                          <th>No.</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Gender</th>
+                        </tr>
+                      </thead>
+                      <tbody id="user-table"></tbody>
+                    </table>
+                  </div><!-- table-responsive -->
+                </div>
+              </div>
+            </div><!-- row -->
 
         </div><!-- az-content-body -->
       </div>
@@ -231,7 +253,6 @@
     <script src="../js/azia.js"></script>
     <script src="../js/chart.flot.sampledata.js"></script>
     <script src="../js/dashboard.sampledata.js"></script>
-    <script src="../js/jquery.cookie.js" type="text/javascript"></script>
 
 
     <!-- FIREBASE SCRIPTS -->  
@@ -240,14 +261,33 @@
 
       <!-- Add Firebase products that you want to use -->
       <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
 
       <script src="firebase.js"></script>
       <script src="data.js"></script>
 
       <script>
+        // FOR USERS TABLE
+        var db = firebase.firestore();
+        let res = "";
+        let i = 0;
+        db.collection("User").get().then((querySnapshot) => {
+          if(!querySnapshot.empty){
+            querySnapshot.forEach((doc) => {
+              i++;
+              res += `<tr><td>${i}</td><td>${doc.data().name}</td><td>${doc.data().email}</td><td>${doc.data().gender}</td></tr>`
+            });
+            $('#user-table').html(res)
+          }
+          else
+          console.log("No documents found");
+        });
 
+        // FOR GENDER GRAPH
+        // const female = db.collection('User').where('gender', '=', "female").get();
       </script>
     <!-- END FIREBASE SCRIPTS -->
+
 
     <script>
       $(function(){
@@ -255,9 +295,9 @@
 
         // Donut Chart
         var datapie = {
-          labels: ['Search', 'Email', 'Referral', 'Social', 'Other'],
+          labels: ['Law', 'Economics', 'Animal Studies', 'Management', 'Hospitality'],
           datasets: [{
-            data: [25,20,30,15,10],
+            data: [35,20,20,15,10],
             backgroundColor: ['#6f42c1', '#007bff','#17a2b8','#00cccc','#adb2bd']
           }]
         };

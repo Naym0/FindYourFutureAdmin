@@ -73,7 +73,7 @@
                 </div><!-- card-header -->
                 <div class="card-body row">
                   <div class="col-md-6 d-flex align-items-center">
-                    <div class="chart"><canvas id="chartDonut1"></canvas></div>
+                    <div class="chart"><canvas id="chartDonut"></canvas></div>
                   </div><!-- col -->
                   <div class="col-md-6 col-lg-5 mg-lg-l-auto mg-t-20 mg-md-t-0">
                     <div class="az-traffic-detail-item">
@@ -133,7 +133,7 @@
                 </div><!-- card-header -->
                 <div class="card-body row">
                   <div class="col-md-6 d-flex align-items-center">
-                    <div class="chart"><canvas id="chartDonut2"></canvas></div>
+                    <div class="chart"><canvas id="chartDonut1"></canvas></div>
                   </div><!-- col -->
                   <div class="col-md-6 col-lg-5 mg-lg-l-auto mg-t-20 mg-md-t-0">
                     <div class="az-traffic-detail-item">
@@ -195,7 +195,7 @@
                 </div><!-- card-header -->
                 <div class="card-body row">
                   <div class="col-md-6 d-flex align-items-center">
-                    <div class="chart"><canvas id="chartDonut"></canvas></div>
+                    <div class="chart"><canvas id="chartDonut3"></canvas></div>
                   </div><!-- col -->
                   <div class="col-md-6 col-lg-5 mg-lg-l-auto mg-t-20 mg-md-t-0">
                     <div class="az-traffic-detail-item">
@@ -276,128 +276,125 @@
       <script src="firebase.js"></script>
       <script src="data.js"></script>
 
-      <script>
-        // FOR USERS TABLE
+      <script defer>
         var db = firebase.firestore();
-        // let res = "";
-        // let i = 0;
-        // db.collection("User").get().then((querySnapshot) => {
-        //   if(!querySnapshot.empty){
-        //     querySnapshot.forEach((doc) => {
-        //       i++;
-        //       res += `<tr><td>${i}</td><td>${doc.data().name}</td><td>${doc.data().email}</td><td>${doc.data().gender}</td></tr>`
-        //     });
-        //     $('#user-table').html(res)
-        //   }
-        //   else
-        //   console.log("No documents found");
-        // });
 
-        //FOR GENDER PARITY COMPARISON
-        // let j =0;
-        // let k =0;
-        // var female = db.collectionGroup('User').get().then(function (querySnapshot) {
-        //     querySnapshot.forEach(function (doc) {
-        //       if(doc.data().gender == "Female")
-        //         j++;
-        //       else if (doc.data().gender == "Male")
-        //         k++;
-        //     });
-        //     document.getElementById('female').innerHTML = j;
-        //     document.getElementById('male').innerHTML = k;
-
-        //     var datapie = {
-        //       labels: ['Female', 'Male'],
-        //       datasets: [{
-        //         data: [j,k],
-        //         backgroundColor: ['#6f42c1', '#007bff']
-        //       }]
-        //     };
-
-        //     var optionpie = {
-        //       maintainAspectRatio: false,
-        //       responsive: true,
-        //       legend: {
-        //         display: false,
-        //       },
-        //       animation: {
-        //         animateScale: true,
-        //         animateRotate: true
-        //       }
-        //     };
-
-        //     // For a doughnut chart
-        //     var ctxpie= document.getElementById('chartDonut');
-        //     var myPieChart6 = new Chart(ctxpie, {
-        //       type: 'doughnut',
-        //       data: datapie,
-        //       options: optionpie
-        //     });
-        // });
+        // FOR USERS TABLE
+        let res = "";
+        let i = 0;
+        db.collection("User").get().then((querySnapshot) => {
+          if(!querySnapshot.empty){
+            querySnapshot.forEach((doc) => {
+              i++;
+              res += `<tr><td>${i}</td><td>${doc.data().name}</td><td>${doc.data().email}</td><td>${doc.data().gender}</td></tr>`
+            });
+            $('#user-table').html(res)
+          }
+          else
+          console.log("No users found");
+        });
         
         //FOR PREFERENCES STATISTICS
-        var arr1 = new Array();
-        var arr2 = new Array();
-        var hobbies = db.collectionGroup('Selections').get().then(function (querySnapshot) {
-            querySnapshot.forEach(function (doc) {
-                arr1.push(doc.data().pref);
-            });
+        db.collectionGroup('Selections').get().then(function (querySnapshot) {
+            preferences_counts = querySnapshot.docs
+            .flatMap(doc => doc.data().pref)
+            .reduce(function(counts, choice) {
+                if (choice in counts) {
+                  counts[choice] += 1;
+                } else {
+                  counts[choice] = 1;
+                }
+                return counts;
+            }, {});
 
-            //convert 2d array to 1d array
-            for(var i = 0; i < arr1.length; i++){
-              arr2 = arr2.concat(arr1[i]);
-            }
-            let hashMap = {};
-            for(var choice of arr2){
-              if(choice in hashMap ){
-                hashMap[choice] = hashMap[choice] + 1; //up the prev count
-              }
-              else{
-              hashMap[choice] = 1;
-              }
-            }
-            let pref = [];
-            Object.keys(hashMap).forEach(key => {
-              pref.push({
-                key,
-                tally: hashMap[key]
-              })
-            })
-
-            // Donut Chart
-            for(var i in pref){
-              var datapie = {
-                labels: [pref[i].key],
-                datasets: [{
-                  data: [10,10,10,10,10,25,25], //not being passed appropriately
-                  backgroundColor: ['#6f42c1','#007bff','#17a2b8','#00cccc','#adb2bd','#ffc107','#f10075']
-                }]
-              };
-              // console.log(pref[i].key);
-            }
-              console.log(pref);
-
-            var optionpie = {
-              maintainAspectRatio: false,
-              responsive: true,
-              legend: {
-                display: false,
-              },
-              animation: {
-                animateScale: true,
-                animateRotate: true
-              }
-            };
-
-            var ctxpie= document.getElementById('chartDonut1');
-            var myPieChart6 = new Chart(ctxpie, {
+            new Chart(document.getElementById('chartDonut'), {
               type: 'doughnut',
-              data: datapie,
-              options: optionpie
+              data: {
+                labels: Object.keys(preferences_counts),
+                datasets: [{
+                  data: Object.values(preferences_counts),
+                  backgroundColor: ['#371c87','#452999','#51389d','#6745a9','#7c53b5','#9161c1','#a570cd','#b97fd9','#cc8fe6','#e09ff2','#f3afff','#f3c0fc','#f3cdfa','#fadeff','#f9e6fc']
+                }]
+              },
+              options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                legend: { display: false },
+                animation: {
+                  animateScale: true,
+                  animateRotate: true
+                }
+              }
             });
         });
 
+        //FOR HOBBIES STATISTICS
+        db.collectionGroup('Selections').get().then(function (querySnapshot) {
+            preferences_counts = querySnapshot.docs
+            .flatMap(doc => doc.data().hobbies)
+            .reduce(function(counts, choice) {
+                if (choice in counts) {
+                  counts[choice] += 1;
+                } else {
+                  counts[choice] = 1;
+                }
+                return counts;
+            }, {});
 
+            new Chart(document.getElementById('chartDonut1'), {
+              type: 'doughnut',
+              data: {
+                labels: Object.keys(preferences_counts),
+                datasets: [{
+                  data: Object.values(preferences_counts),
+                  backgroundColor: ['#371c87','#452999','#51389d','#6745a9','#7c53b5','#9161c1','#a570cd','#b97fd9','#cc8fe6','#e09ff2','#f3afff','#f3c0fc','#f3cdfa','#fadeff','#f9e6fc']
+                }]
+              },
+              options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                legend: { display: false },
+                animation: {
+                  animateScale: true,
+                  animateRotate: true
+                }
+              }
+            });
+        });
+
+        // FOR GENDER PARITY COMPARISON
+        let j =0;
+        let k =0;
+        db.collectionGroup('User').get().then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+              if(doc.data().gender == "Female")
+                j++;
+              else if (doc.data().gender == "Male")
+                k++;
+            });
+            document.getElementById('female').innerHTML = j;
+            document.getElementById('male').innerHTML = k;
+
+            new Chart(document.getElementById('chartDonut3'), {
+              type: 'doughnut',
+              data: {
+                labels: ['Male', 'Female'],
+                datasets: [{
+                  data: [k,j],
+                  backgroundColor: ['#371c87','#6745a9']
+                }]
+              },
+              options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                legend: { display: false },
+                animation: {
+                  animateScale: true,
+                  animateRotate: true
+                }
+              }
+            });
+        });
       </script>
     <!-- END FIREBASE SCRIPTS -->
 
@@ -405,35 +402,6 @@
     <script>
       $(function(){
         'use strict'
-
-        // Donut Chart
-        var datapie = {
-          labels: ['Law', 'Economics', 'Animal Studies', 'Management', 'Hospitality'],
-          datasets: [{
-            data: [35,20,20,15,10],
-            backgroundColor: ['#6f42c1', '#007bff','#17a2b8','#00cccc','#adb2bd']
-          }]
-        };
-
-        var optionpie = {
-          maintainAspectRatio: false,
-          responsive: true,
-          legend: {
-            display: false,
-          },
-          animation: {
-            animateScale: true,
-            animateRotate: true
-          }
-        };
-
-        var ctxpie= document.getElementById('chartDonut2');
-        var myPieChart6 = new Chart(ctxpie, {
-          type: 'doughnut',
-          data: datapie,
-          options: optionpie
-        });
-
       });
     </script>
   </body>

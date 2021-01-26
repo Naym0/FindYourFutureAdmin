@@ -18,6 +18,27 @@
 
     <!-- favicon -->
     <link rel="icon" type="image/png" href="../img/icon.png"/>
+    <script>
+        function myFunction() {
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("search");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("tbl");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }       
+          }
+        }
+    </script>
+
   </head>
   
   <body>
@@ -121,7 +142,7 @@
                         <div class="progress-bar bg-gray-500 wd-10p" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                       </div><!-- progress -->
                     </div>
-                  </div><!-- col -->
+                  </div>
                 </div><!-- card-body -->
               </div><!-- card-dashboard-four -->
             </div><!-- col -->
@@ -200,18 +221,18 @@
                   <div class="col-md-6 col-lg-5 mg-lg-l-auto mg-t-20 mg-md-t-0">
                     <div class="az-traffic-detail-item">
                       <div>
-                        <h6>Female</h6>
-                      </div>
-                      <div>
-                        <p id="female"></p>
-                      </div><!-- progress -->
-                    </div><br>
-                    <div class="az-traffic-detail-item">
-                      <div>
                         <h6>Male</h6>
                       </div>
                       <div>
                         <p id="male"></p>
+                      </div><!-- progress -->
+                    </div><br>
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <h6>Female</h6>
+                      </div>
+                      <div>
+                        <p id="female"></p>
                       </div><br>
                     </div>
                   </div><!-- col -->
@@ -222,16 +243,16 @@
             <div class="col-lg-6 mg-t-20 mg-lg-t-0">
               <div class="card card-dashboard-four">
                 <div class="card-header">
-                  <h6 class="card-title">All Registered Users</h6>
+                  <h6 class="card-title" style="float:left;">All Registered Users</h6>
+                  <input type="text" id="search" placeholder="Search...." style="float:right;" onkeyup="myFunction()">
                 </div><!-- card-header -->
-                <div class="table-responsive">
-                  <table class="table mg-b-0">
+                <div class="table-responsive" style="height:250px;overflow:auto;">
+                  <table class="table mg-b-0" id="tbl">
                     <thead>
                       <tr>
                         <th>No.</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Gender</th>
                       </tr>
                     </thead>
                     <tbody id="user-table"></tbody>
@@ -263,7 +284,7 @@
     <script src="../js/azia.js"></script>
     <script src="../js/chart.flot.sampledata.js"></script>
     <script src="../js/dashboard.sampledata.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- FIREBASE SCRIPTS -->  
       <!-- The core Firebase SDK must be listed first -->
@@ -286,7 +307,7 @@
           if(!querySnapshot.empty){
             querySnapshot.forEach((doc) => {
               i++;
-              res += `<tr><td>${i}</td><td>${doc.data().name}</td><td>${doc.data().email}</td><td>${doc.data().gender}</td></tr>`
+              res += `<tr><td>${i}</td><td>${doc.data().name}</td><td>${doc.data().email}</td></tr>`
             });
             $('#user-table').html(res)
           }
@@ -402,7 +423,9 @@
     <script>
       $(function(){
         'use strict'
+
       });
+
     </script>
   </body>
 </html>

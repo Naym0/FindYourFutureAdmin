@@ -134,11 +134,11 @@
               <div class="card card-dashboard-four">
                 <div class="card-header">
                   <h6 class="card-title">Gender comparison</h6>
-                </div><!-- card-header -->
+                </div>
                 <div class="card-body row">
                   <div class="col-md-6 d-flex align-items-center">
                     <div class="chart"><canvas id="chartDonut3"></canvas></div>
-                  </div><!-- col -->
+                  </div>
                   <div class="col-md-6 col-lg-5 mg-lg-l-auto mg-t-20 mg-md-t-0">
                     <div class="az-traffic-detail-item">
                       <div>
@@ -146,7 +146,7 @@
                       </div>
                       <div>
                         <p id="male"></p>
-                      </div><!-- progress -->
+                      </div>
                     </div><br>
                     <div class="az-traffic-detail-item">
                       <div>
@@ -156,12 +156,29 @@
                         <p id="female"></p>
                       </div><br>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 mg-t-20 mg-lg-t-0">
+              <div class="card card-dashboard-four">
+                <div class="card-header">
+                  <h6 class="card-title">Degree Distribution</h6>
+                </div><!-- card-header -->
+                <div class="card-body row">
+                  <div class="col-md-6 d-flex align-items-center">
+                    <div class="chart"><canvas id="chartDonut4"></canvas></div>
+                  </div><!-- col -->
+                  <br><br><br><br><br><br><br><br><br><br><br>
+                  <div class="col-md-6 col-lg-5 mg-lg-l-auto mg-t-20 mg-md-t-0">
+                    </div>
                   </div><!-- col -->
                 </div><!-- card-body -->
               </div><!-- card-dashboard-four -->
             </div><!-- col -->
 
-            <div class="col-lg-6 mg-t-20 mg-lg-t-0">
+            <div class="col-lg-12 mg-t-20 mg-lg-t-0">
               <div class="card card-dashboard-four">
                 <div class="card-header">
                   <h6 class="card-title" style="float:left;">All Registered Users</h6>
@@ -357,6 +374,40 @@
                 labels: Object.keys(subj_counts),
                 datasets: [{
                   data: Object.values(subj_counts),
+                  backgroundColor: ['#371c87','#452999','#51389d','#6745a9','#7c53b5','#9161c1','#a570cd','#b97fd9','#cc8fe6','#e09ff2','#f3afff','#f3c0fc','#f3cdfa','#fadeff','#f9e6fc']
+                }]
+              },
+              options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                legend: { display: false },
+                animation: {
+                  animateScale: true,
+                  animateRotate: true
+                }
+              }
+            });
+        });
+
+         // FOR DEGREE STATISTICS
+         db.collectionGroup('Selections').get().then(function (querySnapshot) {
+            degree_counts = querySnapshot.docs
+            .flatMap(doc => doc.data().degrees)
+            .reduce(function(counts, choice) {
+                if (choice in counts) {
+                  counts[choice] += 1;
+                } else {
+                  counts[choice] = 1;
+                }
+                return counts;
+            }, {});
+
+            new Chart(document.getElementById('chartDonut4'), {
+              type: 'doughnut',
+              data: {
+                labels: Object.keys(degree_counts),
+                datasets: [{
+                  data: Object.values(degree_counts),
                   backgroundColor: ['#371c87','#452999','#51389d','#6745a9','#7c53b5','#9161c1','#a570cd','#b97fd9','#cc8fe6','#e09ff2','#f3afff','#f3c0fc','#f3cdfa','#fadeff','#f9e6fc']
                 }]
               },

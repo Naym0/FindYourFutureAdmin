@@ -1,6 +1,6 @@
 firebase.auth().onAuthStateChanged(function(user){
     if(user){
-        window.location.replace("./index.html");
+        window.location.replace("index.html");
     }
     else{
         // window.location.replace("./page-signin.html");
@@ -16,7 +16,7 @@ function login(event){
         firebase.auth().signInWithEmailAndPassword(useremail, userpass)
         .then((user) => {
             console.log(email);
-            window.location.replace("./index.html");
+            window.location.replace("index.html");
         })
         .catch((error) => {
             var errorMessage = error.message;

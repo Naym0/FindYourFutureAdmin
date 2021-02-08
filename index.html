@@ -8,35 +8,35 @@
     <title>Find Your Future Admin</title>
 
     <!-- vendor css -->
-    <link href="../lib/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="../lib/typicons.font/typicons.css" rel="stylesheet">
-    <link href="../lib/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="lib/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="lib/typicons.font/typicons.css" rel="stylesheet">
+    <link href="lib/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
 
     <!-- azia CSS -->
-    <link rel="stylesheet" href="../css/azia.css">
+    <link rel="stylesheet" href="css/azia.css">
 
     <!-- favicon -->
-    <link rel="icon" type="image/png" href="../img/icon.png"/>
+    <link rel="icon" type="image/png" href="img/icon.png"/>
     <script>
-        function myFunction() {
-          var input, filter, table, tr, td, i, txtValue;
-          input = document.getElementById("search");
-          filter = input.value.toUpperCase();
-          table = document.getElementById("tbl");
-          tr = table.getElementsByTagName("tr");
-          for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
-            if (td) {
-              txtValue = td.textContent || td.innerText;
-              if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-              } else {
-                tr[i].style.display = "none";
-              }
-            }       
-          }
+      function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("search");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("tbl");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[1];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }       
         }
+      }
     </script>
   </head>
   
@@ -44,7 +44,7 @@
     <div class="az-header">
       <div class="container">
         <div class="az-header-left">
-          <img src="../img/logo_plain.png" alt="Logo" style="width:180px;height:50px;">
+          <img src="img/logo_plain.png" alt="Logo" style="width:180px;height:50px;">
           <a href="" id="azMenuShow" class="az-header-menu-icon d-lg-none"><span></span></a>
         </div><!-- az-header-left -->
         <div class="az-header-menu">
@@ -56,14 +56,14 @@
         </div><!-- az-header-menu -->
         <div class="az-header-right">
           <div class="dropdown az-profile-menu">
-            <a href="" class="az-img-user"><img src="../img/user.png" alt=""></a>
+            <a href="" class="az-img-user"><img src="img/user.png" alt=""></a>
             <div class="dropdown-menu">
               <div class="az-dropdown-header d-sm-none">
                 <a href="" class="az-header-arrow"><i class="icon ion-md-arrow-back"></i></a>
               </div>
               <div class="az-header-profile">
                 <div class="az-img-user">
-                  <img src="../img/user.png" alt="">
+                  <img src="img/user.png" alt="">
                 </div><!-- az-img-user -->
                 <h6>Administrator</h6>
               </div><!-- az-header-profile -->
@@ -172,18 +172,27 @@
                   </div><!-- col -->
                   <br><br><br><br><br><br><br><br><br><br><br>
                   <div class="col-md-6 col-lg-5 mg-lg-l-auto mg-t-20 mg-md-t-0">
+                    <div class="az-traffic-detail-item">
+                      <div>
+                        <h6>Total recommended degrees</h6>
+                      </div>
+                      <div>
+                        <p id="recommended"></p>
+                      </div>
                     </div>
                   </div><!-- col -->
                 </div><!-- card-body -->
               </div><!-- card-dashboard-four -->
             </div><!-- col -->
+          </div>
 
+          <!-- <div class="row row-sm mg-b-20">
             <div class="col-lg-12 mg-t-20 mg-lg-t-0">
               <div class="card card-dashboard-four">
                 <div class="card-header">
                   <h6 class="card-title" style="float:left;">All Registered Users</h6>
                   <input type="text" id="search" placeholder="Search...." style="float:right;" onkeyup="myFunction()">
-                </div><!-- card-header -->
+                </div>
                 <div class="table-responsive" style="height:250px;overflow:auto;">
                   <table class="table mg-b-0" id="tbl">
                     <thead>
@@ -195,33 +204,33 @@
                     </thead>
                     <tbody id="user-table"></tbody>
                   </table>
-                </div><!-- table-responsive -->
+                </div>
               </div>
-            </div><!-- row -->
-          </div>
+            </div>
+          </div> -->
 
         </div><!-- az-content-body -->
       </div>
     </div><!-- az-content -->
 
-    <div class="az-footer ht-40">
+    <div class="az-footer ht-40" style="background-color: #42075b;">
       <div class="container ht-100p pd-t-0-f">
-        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Find Your Future 2020</span>
+        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Find Your Future 2021</span>
       </div><!-- container -->
     </div><!-- az-footer -->
 
 
-    <script src="../lib/jquery/jquery.min.js"></script>
-    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../lib/ionicons/ionicons.js"></script>
-    <script src="../lib/jquery.flot/jquery.flot.js"></script>
-    <script src="../lib/jquery.flot/jquery.flot.resize.js"></script>
-    <script src="../lib/chart.js/Chart.bundle.min.js"></script>
-    <script src="../lib/peity/jquery.peity.min.js"></script>
-    <script src="../js/chart.chartjs.js"></script>
-    <script src="../js/azia.js"></script>
-    <script src="../js/chart.flot.sampledata.js"></script>
-    <script src="../js/dashboard.sampledata.js"></script>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/ionicons/ionicons.js"></script>
+    <script src="lib/jquery.flot/jquery.flot.js"></script>
+    <script src="lib/jquery.flot/jquery.flot.resize.js"></script>
+    <script src="lib/chart.js/Chart.bundle.min.js"></script>
+    <script src="lib/peity/jquery.peity.min.js"></script>
+    <script src="js/chart.chartjs.js"></script>
+    <script src="js/azia.js"></script>
+    <script src="js/chart.flot.sampledata.js"></script>
+    <script src="js/dashboard.sampledata.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- FIREBASE SCRIPTS -->  
@@ -232,26 +241,26 @@
       <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
       <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
 
-      <script src="firebase.js"></script>
-      <script src="data.js"></script>
+      <script src="js/firebase.js"></script>
+      <script src="js/data.js"></script>
 
       <script defer>
         var db = firebase.firestore();
 
         // FOR USERS TABLE
-        let res = "";
-        let i = 0;
-        db.collection("User").get().then((querySnapshot) => {
-          if(!querySnapshot.empty){
-            querySnapshot.forEach((doc) => {
-              i++;
-              res += `<tr><td>${i}</td><td>${doc.data().name}</td><td>${doc.data().email}</td></tr>`
-            });
-            $('#user-table').html(res)
-          }
-          else
-          console.log("No users found");
-        });
+        // let res = "";
+        // let i = 0;
+        // db.collection("User").get().then((querySnapshot) => {
+        //   if(!querySnapshot.empty){
+        //     querySnapshot.forEach((doc) => {
+        //       i++;
+        //       res += `<tr><td>${i}</td><td>${doc.data().name}</td><td>${doc.data().email}</td></tr>`
+        //     });
+        //     $('#user-table').html(res)
+        //   }
+        //   else
+        //   console.log("No users found");
+        // });
         
         //FOR PREFERENCES STATISTICS
         db.collectionGroup('Selections').get().then(function (querySnapshot) {
@@ -390,17 +399,21 @@
         });
 
          // FOR DEGREE STATISTICS
-         db.collectionGroup('Selections').get().then(function (querySnapshot) {
+        let total=0;
+        db.collectionGroup('Selections').get().then(function (querySnapshot) {
             degree_counts = querySnapshot.docs
             .flatMap(doc => doc.data().degrees)
             .reduce(function(counts, choice) {
                 if (choice in counts) {
                   counts[choice] += 1;
+                  total++
                 } else {
                   counts[choice] = 1;
+                  total++
                 }
                 return counts;
             }, {});
+            document.getElementById('recommended').innerHTML = total;
 
             new Chart(document.getElementById('chartDonut4'), {
               type: 'doughnut',
@@ -408,7 +421,7 @@
                 labels: Object.keys(degree_counts),
                 datasets: [{
                   data: Object.values(degree_counts),
-                  backgroundColor: ['#371c87','#452999','#51389d','#6745a9','#7c53b5','#9161c1','#a570cd','#b97fd9','#cc8fe6','#e09ff2','#f3afff','#f3c0fc','#f3cdfa','#fadeff','#f9e6fc']
+                  backgroundColor: ['#371c87','#452999','#51389d','#6745a9','#7c53b5','#9161c1','#a570cd','#b97fd9','#cc8fe6','#e09ff2','#f3afff','#f3c0fc','#f3cdfa','#fadeff','#f9e6fc','#edd2f1','#e0bde6','#d3a9db','#c695d0']
                 }]
               },
               options: {
@@ -425,13 +438,5 @@
       </script>
     <!-- END FIREBASE SCRIPTS -->
 
-
-    <script>
-      $(function(){
-        'use strict'
-
-      });
-
-    </script>
   </body>
 </html>
